@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './App.module.scss';
-import TodoItem from './components/TodoItem/TodoItem';
+import TodoList from './components/TodoList/TodoList';
 
 const App = () => (
   <div className={styles.app}>
@@ -11,31 +11,8 @@ const App = () => (
       <input type="text" placeholder="Add todo" />
     </label>
     <button type="button">Add Todo</button>
-    <div
-      className="todos"
-      style={{
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-      }}>
-      <ul
-        style={{
-          maxWidth: '450px',
-          width: '100%',
-        }}>
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-      </ul>
+    <div className={styles.todoContainer}>
+      <TodoList />
     </div>
   </div>
 );
