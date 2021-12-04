@@ -1,7 +1,7 @@
 import React from 'react';
-import TodoItem from './components/TodoItem/TodoItem';
 
 import styles from './App.module.scss';
+import TodoItem from './components/TodoItem/TodoItem';
 
 const App = () => (
   <div className={styles.app}>
