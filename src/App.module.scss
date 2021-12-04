@@ -1,3 +1,6 @@
+@import 'src/styles/abstract/colors';
+@import 'src/styles/abstract/mixins';
+
 .app {
   display: flex;
   flex-direction: column;
@@ -5,7 +8,32 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  padding: 2rem;
+  max-width: 120rem;
+  padding: 3.2rem;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 45rem;
+  margin-top: 3rem;
+
+  @include media-query(tablet-portrait-up) {
+    display: flex;
+  }
+}
+
+.pageTitle {
+  font-size: 3.2rem;
+  color: $gray-200;
+  margin-bottom: 3.5rem;
+  text-align: center;
+  line-height: 1.5;
+
+  .highlightText {
+    display: block;
+    color: $yellow-600;
+    letter-spacing: 1rem;
+  }
 }
 
 .todoContainer {
