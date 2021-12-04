@@ -1,16 +1,28 @@
 import React from 'react';
 
 import styles from './App.module.scss';
+import Button from './components/Button/Button';
+import Input from './components/Input/Input';
 import TodoList from './components/TodoList/TodoList';
 
 const App = () => (
   <div className={styles.app}>
-    <h1>Road to success: Todo App</h1>
+    <h1 className={styles.pageTitle}>
+      Road to success: <span className={styles.highlightText}>Todo App</span>
+    </h1>
 
-    <label>
-      <input type="text" placeholder="Add todo" />
-    </label>
-    <button type="button">Add Todo</button>
+    <div className={styles.wrapper}>
+      <Input
+        inputClassName="todoInput"
+        inputType="text"
+        inputPlaceholder="Add Todo"
+      />
+      <Button
+        buttonClassName="addBtn"
+        buttonType="button"
+        buttonText="Add Todo"
+      />
+    </div>
     <div className={styles.todoContainer}>
       <TodoList />
     </div>
