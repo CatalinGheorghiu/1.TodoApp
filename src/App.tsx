@@ -15,14 +15,20 @@ interface TodoListInterface {
 const App = () => {
   const [todoList, setTodoList] = useState<TodoListInterface[]>([]);
   const [inputValue, setInputValue] = useState('');
+  const [error, setError] = useState('');
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value) {
+      setError('');
+    }
     setInputValue(event.target.value);
   };
 
   // Create todo
   const createTodo = () => {
-    if (inputValue) {
+    if (!inputValue) {
+      setError('Please kindly add a value');
+    } else {
       setTodoList((prevState) => [
         ...prevState,
         {
@@ -31,9 +37,16 @@ const App = () => {
           complete: false,
         },
       ]);
+      setError('');
     }
 
     setInputValue('');
+  };
+
+  // Delete todo
+  const deleteTodo = (id: string) => {
+    const newData = todoList.filter((todo) => todo.id !== id);
+    setTodoList(newData);
   };
 
   // Get data from LS
@@ -62,8 +75,9 @@ const App = () => {
           inputType="text"
           inputValue={inputValue}
           inputOnChange={handleOnChange}
-          inputPlaceholder="Add Todo"
+          inputPlaceholder="Add meaning to a todo"
         />
+
         <Button
           buttonClassName="addBtn"
           buttonType="button"
@@ -71,9 +85,10 @@ const App = () => {
           buttonClick={createTodo}
         />
       </div>
+      {error && <div className={styles.error}>{error}</div>}
       <div className={styles.todoContainer}>
         {todoList?.length > 0 ? (
-          <TodoList todos={todoList} />
+          <TodoList todos={todoList} deleteTodo={deleteTodo} />
         ) : (
           <p>No todos yet!</p>
         )}

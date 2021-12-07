@@ -1,6 +1,7 @@
 .todoList {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-flow: dense;
   gap: 0 20px;
   justify-items: center;
   width: 100%;

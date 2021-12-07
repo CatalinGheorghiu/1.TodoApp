@@ -12,7 +12,7 @@ input {
   font-weight: 500;
 
   &::placeholder {
-    font-weight: bold;
+    font-style: italic;
   }
 
   @include media-query(tablet-portrait-up) {
