@@ -9,7 +9,7 @@
 - delete todos
 - save to local storage
 
-# Stack:
+## Stack:
 
 - React
 - Typescript
@@ -18,7 +18,7 @@
 - Prettier
 - ESLint
 
-# Live preview
+## Live preview
 
 https://road-to-success-todo-app.netlify.app/
 
