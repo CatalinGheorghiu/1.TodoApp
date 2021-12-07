@@ -1,6 +1,26 @@
-# Vite + React + Typescript + Eslint + Prettier Boilerplate
+# Road to success:
 
-A starter for React with Typescript with the fast Vite and all static code testing with Eslint and formatting with Prettier.
+## 1. Todo App
+
+## Features:
+
+- create a todo
+- list the created todos
+- delete todos
+- save to local storage
+
+# Stack:
+
+- React
+- Typescript
+- SCSS modules
+- Vite
+- Prettier
+- ESLint
+
+# Live preview
+
+https://road-to-success-todo-app.netlify.app/
 
 ## Installation
 
