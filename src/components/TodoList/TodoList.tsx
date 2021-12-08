@@ -1,14 +1,11 @@
 import React from 'react';
 
+import TodoInterface from '../../interfaces';
 import TodoItem from '../TodoItem/TodoItem';
 import styles from './TodoList.module.scss';
 
 interface Todos {
-  todos: {
-    id: string;
-    text: string;
-    complete: boolean;
-  }[];
+  todos: TodoInterface[];
   deleteTodo: (arg: string) => void;
 }
 

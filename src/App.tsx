@@ -5,15 +5,10 @@ import Button from './components/Button/Button';
 import Input from './components/Input/Input';
 import TodoList from './components/TodoList/TodoList';
 import uuidGenerator from './helpers/generateUniqueID';
-
-interface TodoListInterface {
-  id: string;
-  text: string;
-  complete: boolean;
-}
+import TodoInterface from './interfaces';
 
 const App = () => {
-  const [todoList, setTodoList] = useState<TodoListInterface[]>([]);
+  const [todoList, setTodoList] = useState<TodoInterface[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
 

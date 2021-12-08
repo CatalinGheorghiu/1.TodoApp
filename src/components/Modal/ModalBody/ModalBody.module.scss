@@ -1,0 +1,25 @@
+@import 'src/styles/abstract/mixins';
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: initial;
+  flex-grow: 2;
+
+  @include media-query(tablet-portrait-up) {
+    flex-direction: row;
+  }
+
+  &::-webkit-scrollbar {
+    height: 1rem;
+    border-radius: 1rem;
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb:vertical {
+    background-color: #dedede;
+    border-radius: 1rem;
+  }
+}
