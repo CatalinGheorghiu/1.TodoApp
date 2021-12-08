@@ -1,0 +1,28 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 102;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50rem;
+  min-width: 35rem;
+  min-height: 25rem;
+  max-height: 70vh;
+  z-index: 103;
+  padding: 3rem;
+  background-color: white;
+  box-shadow: 0 0.6rem 1.8rem rgba(0, 0, 0, 0.06);
+  border-radius: 0.6rem;
+}

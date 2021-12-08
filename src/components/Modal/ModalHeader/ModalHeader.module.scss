@@ -1,0 +1,13 @@
+.modalHeader {
+  display: flex;
+  justify-content: center;
+  min-height: 3rem;
+  color: initial;
+
+  .modalTitle {
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    overflow-y: hidden;
+  }
+}
