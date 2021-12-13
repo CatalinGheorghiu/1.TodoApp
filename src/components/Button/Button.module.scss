@@ -31,15 +31,27 @@
   }
 }
 
-.buttonNotCompleted {
+.deleteBtn,
+.editBtn {
   font-size: 1.8rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
-.deleteBtn,
-.cancelBtn {
+.editBtn {
+  color: $yellow-500;
+  height: 2.2rem;
+  width: 1.8rem;
+}
+.deleteBtn {
+  color: $red-600;
+  padding-left: 0.5rem;
+}
+
+.deleteBtnModal,
+.cancelBtnModal,
+.addBtnModal {
   width: 100%;
   background-color: $yellow-600;
   border: none;
@@ -58,19 +70,15 @@
   }
 }
 
-.deleteBtn {
+.deleteBtnModal {
   background-color: $red-700;
-
-  @include media-query(tablet-portrait-up) {
-    margin-left: 1rem;
-  }
 
   &:hover {
     background-color: $red-800;
   }
 }
 
-.cancelBtn {
+.cancelBtnModal {
   background-color: $blue-500;
 
   &:hover {

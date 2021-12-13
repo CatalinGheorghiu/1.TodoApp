@@ -1,20 +1,23 @@
 @import 'src/styles/abstract/mixins';
+@import 'src/styles/abstract/colors';
 
 label,
 input {
   width: 100%;
 }
 
-.todoInput {
-  padding: 1.5rem;
-  border: none;
+input {
+  padding: 1.5rem 1.5rem 1.35rem;
+  border: 1px solid $stone-800;
   border-radius: 7px;
   font-weight: 500;
 
   &::placeholder {
     font-style: italic;
   }
+}
 
+.todoInput {
   @include media-query(tablet-portrait-up) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
