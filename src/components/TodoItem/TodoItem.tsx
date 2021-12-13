@@ -1,17 +1,27 @@
 import React, { useState } from 'react';
 
+import DeleteIcon from '../../assets/DeleteIcon';
+import EditIcon from '../../assets/EditIcon';
 import Button from '../Button/Button';
-import Modal from '../Modal/Modal';
+import DeleteModal from '../DeleteModal/DeleteModal';
+import EditModal from '../EditModal/EditModal';
 import styles from './TodoItem.module.scss';
 
 interface TodoItemProps {
   todoText: string;
   todoId: string;
   todoDelete: (arg: string) => void;
+  todoEdit: (id: string, text: string) => void;
 }
 
-const TodoItem = ({ todoText, todoId, todoDelete }: TodoItemProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const TodoItem = ({
+  todoText,
+  todoId,
+  todoDelete,
+  todoEdit,
+}: TodoItemProps) => {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   return (
     <>
@@ -19,31 +29,32 @@ const TodoItem = ({ todoText, todoId, todoDelete }: TodoItemProps) => {
         <p className={styles.listItem__text}>{todoText}</p>
         <div className={styles.listItem__buttonsContainer}>
           <Button
-            buttonClassName={'buttonNotCompleted'}
+            buttonClassName={'editBtn'}
             buttonType={'button'}
-            buttonClick={() => setIsModalOpen(true)}
-            buttonText={'❌'}
-          />
-        </div>
-      </li>
-
-      <Modal isOpen={isModalOpen} hide={() => setIsModalOpen(!isModalOpen)}>
-        <Modal.Header>Are you sure you want to delete this item?</Modal.Header>
-        <Modal.Body>
-          <Button
-            buttonClassName={'cancelBtn'}
-            buttonType={'button'}
-            buttonClick={() => setIsModalOpen(!isModalOpen)}
-            buttonText={'Cancel'}
-          />
+            buttonClick={() => setIsEditModalOpen(true)}>
+            <EditIcon />
+          </Button>
           <Button
             buttonClassName={'deleteBtn'}
             buttonType={'button'}
-            buttonClick={() => todoDelete(todoId)}
-            buttonText={'Delete'}
-          />
-        </Modal.Body>
-      </Modal>
+            buttonClick={() => setIsDeleteModalOpen(true)}>
+            <DeleteIcon />
+          </Button>
+        </div>
+      </li>
+      <DeleteModal
+        isDeleteModalOpen={isDeleteModalOpen}
+        setIsDeleteModalOpen={setIsDeleteModalOpen}
+        todoDelete={todoDelete}
+        todoId={todoId}
+      />
+      <EditModal
+        isEditModalOpen={isEditModalOpen}
+        setIsEditModalOpen={setIsEditModalOpen}
+        todoEdit={todoEdit}
+        todoId={todoId}
+        todoText={todoText}
+      />
     </>
   );
 };

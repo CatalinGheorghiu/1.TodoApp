@@ -38,6 +38,21 @@ const App = () => {
     setInputValue('');
   };
 
+  // Edit todo
+  const editTodo = (id: string, text: string) => {
+    const newData = todoList.map(
+      (todo): TodoInterface =>
+        todo.id === id
+          ? {
+              ...todo,
+              text: text,
+            }
+          : todo,
+    );
+
+    setTodoList(newData);
+  };
+
   // Delete todo
   const deleteTodo = (id: string) => {
     const newData = todoList.filter((todo) => todo.id !== id);
@@ -83,7 +98,11 @@ const App = () => {
       {error && <div className={styles.error}>{error}</div>}
       <div className={styles.todoContainer}>
         {todoList?.length > 0 ? (
-          <TodoList todos={todoList} deleteTodo={deleteTodo} />
+          <TodoList
+            todos={todoList}
+            deleteTodo={deleteTodo}
+            editTodo={editTodo}
+          />
         ) : (
           <p>No todos yet!</p>
         )}

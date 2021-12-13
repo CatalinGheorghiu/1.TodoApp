@@ -5,8 +5,9 @@ import styles from './Button.module.scss';
 interface ButtonProps {
   buttonType: 'button' | 'submit' | 'reset';
   buttonClick: () => void;
-  buttonText: string;
+  buttonText?: string;
   buttonClassName?: string;
+  children?: React.ReactElement;
 }
 
 const Button = ({
@@ -14,12 +15,14 @@ const Button = ({
   buttonText,
   buttonClick,
   buttonClassName,
+  children,
 }: ButtonProps) => (
   <button
     className={buttonClassName && styles[buttonClassName]}
     type={buttonType}
     onClick={buttonClick}>
-    {buttonText}
+    {buttonText && buttonText}
+    {children && children}
   </button>
 );
 
