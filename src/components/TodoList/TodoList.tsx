@@ -8,22 +8,25 @@ interface Todos {
   todos: TodoInterface[];
   deleteTodo: (arg: string) => void;
   editTodo: (id: string, text: string) => void;
+  handleCheck: (id: string) => void;
 }
 
-const TodoList = ({ todos, deleteTodo, editTodo }: Todos) => {
+const TodoList = ({ todos, deleteTodo, editTodo, handleCheck }: Todos) => {
   return (
-    <ul className={styles.todoList}>
-      {todos?.length > 0 &&
-        todos.map(({ id, text }) => (
-          <TodoItem
-            key={id}
-            todoText={text}
-            todoId={id}
-            todoDelete={deleteTodo}
-            todoEdit={editTodo}
-          />
-        ))}
-    </ul>
+    <>
+      <ul className={styles.todoList}>
+        {todos?.length > 0 &&
+          todos.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              todoDelete={deleteTodo}
+              todoEdit={editTodo}
+              handleCheck={handleCheck}
+            />
+          ))}
+      </ul>
+    </>
   );
 };
 

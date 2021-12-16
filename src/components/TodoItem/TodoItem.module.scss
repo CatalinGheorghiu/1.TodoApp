@@ -3,19 +3,29 @@
 .listItem {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   max-width: 45rem;
   padding: 1.6rem;
   margin: 0.6rem 0;
-  background-color: $blue-500;
+  background-color: $yellow-300;
+  color: $slate-900;
   border-radius: 0.7rem;
 
   &__text {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+    font-weight: bolder;
     cursor: default;
   }
 
   &__buttonsContainer {
     display: flex;
+  }
+
+  &__completed {
+    background-color: $green-400;
+    .listItem__text {
+      text-decoration: line-through;
+    }
   }
 }
