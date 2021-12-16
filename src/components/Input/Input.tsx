@@ -4,10 +4,11 @@ import styles from './Input.module.scss';
 
 interface InputProps {
   inputType: string;
-  inputValue: string;
-  inputOnChange: React.ChangeEventHandler<HTMLInputElement>;
-  inputPlaceholder: string;
+  inputValue?: string;
+  inputOnChange?: React.ChangeEventHandler<HTMLInputElement>;
+  inputPlaceholder?: string;
   inputClassName?: string;
+  checked?: boolean;
 }
 
 const Input = ({
@@ -16,6 +17,7 @@ const Input = ({
   inputOnChange,
   inputPlaceholder,
   inputClassName,
+  checked,
 }: InputProps) => {
   return (
     <label>
@@ -25,6 +27,7 @@ const Input = ({
         placeholder={inputPlaceholder}
         value={inputValue}
         onChange={inputOnChange}
+        checked={checked}
       />
     </label>
   );

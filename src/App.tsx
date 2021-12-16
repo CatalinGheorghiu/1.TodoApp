@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import styles from './App.module.scss';
 import Button from './components/Button/Button';
 import Input from './components/Input/Input';
-import TodoList from './components/TodoList/TodoList';
+import TodoListCompleted from './components/TodoListCompleted/TodoListCompleted';
+import TodoListInProgress from './components/TodoListInProgress/TodoListInProgress';
 import uuidGenerator from './helpers/generateUniqueID';
 import TodoInterface from './interfaces';
 
@@ -11,6 +12,8 @@ const App = () => {
   const [todoList, setTodoList] = useState<TodoInterface[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
+  const inProgressTodos = todoList.filter((todo) => todo.inProgress);
+  const completedTodos = todoList.filter((todo) => !todo.inProgress);
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value) {
@@ -29,7 +32,7 @@ const App = () => {
         {
           id: uuidGenerator(),
           text: inputValue,
-          complete: false,
+          inProgress: true,
         },
       ]);
       setError('');
@@ -59,12 +62,28 @@ const App = () => {
     setTodoList(newData);
   };
 
+  // Check Todo
+  const handleCheck = (id: string) => {
+    const newData = todoList.map(
+      (todo): TodoInterface =>
+        todo.id === id
+          ? {
+              ...todo,
+              inProgress: !todo.inProgress,
+            }
+          : todo,
+    );
+
+    setTodoList(newData);
+  };
+
   // Get data from LS
   useEffect(() => {
-    const data = localStorage.getItem('todos');
+    const todos = localStorage.getItem('todos');
 
-    if (data) {
-      setTodoList(JSON.parse(data));
+    if (todos) {
+      const parsedTodos = JSON.parse(todos);
+      setTodoList(parsedTodos);
     }
   }, []);
 
@@ -98,11 +117,24 @@ const App = () => {
       {error && <div className={styles.error}>{error}</div>}
       <div className={styles.todoContainer}>
         {todoList?.length > 0 ? (
-          <TodoList
-            todos={todoList}
-            deleteTodo={deleteTodo}
-            editTodo={editTodo}
-          />
+          <>
+            {inProgressTodos?.length > 0 && (
+              <TodoListInProgress
+                todos={inProgressTodos}
+                deleteTodo={deleteTodo}
+                editTodo={editTodo}
+                handleCheck={handleCheck}
+              />
+            )}
+            {completedTodos.length > 0 && (
+              <TodoListCompleted
+                todos={completedTodos}
+                deleteTodo={deleteTodo}
+                editTodo={editTodo}
+                handleCheck={handleCheck}
+              />
+            )}
+          </>
         ) : (
           <p>No todos yet!</p>
         )}

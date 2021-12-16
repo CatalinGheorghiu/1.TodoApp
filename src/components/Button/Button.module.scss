@@ -33,6 +33,7 @@
 
 .deleteBtn,
 .editBtn {
+  margin-left: 0.5rem;
   font-size: 1.8rem;
   background-color: transparent;
   border: none;
@@ -40,13 +41,12 @@
 }
 
 .editBtn {
-  color: $yellow-500;
+  color: $blue-900;
   height: 2.2rem;
   width: 1.8rem;
 }
 .deleteBtn {
   color: $red-600;
-  padding-left: 0.5rem;
 }
 
 .deleteBtnModal,
